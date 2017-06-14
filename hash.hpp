@@ -1,48 +1,34 @@
 #ifndef HASH_HPP_
 #define HASH_HPP_
 
-#include <vector>
-#include <string>
-#include <pthread.h>
+#include <experimental/string_view>
 
 #include "tbb/concurrent_unordered_map.h"
 #include "tbb/concurrent_vector.h"
 #include "read.hpp"
 
-typedef tbb::concurrent_unordered_map<std::string, tbb::concurrent_vector<Read*>> HashMap;
+typedef tbb::concurrent_unordered_map<std::experimental::string_view, tbb::concurrent_vector<Read*>,
+	std::hash<std::experimental::string_view>, std::equal_to<std::experimental::string_view>> HashMap;
 
 class Hash {
 public:
-	/* Number of independent hashes */
-	static const int D = 4;
+	/* Length of strings to hash. */
+	int K = 20;
 
-	/* Number of indices to hash */
-	//static const int M = 20;
-
-	/* Length of strings to hash */
-	static const int K = 20;
-
-	/* Indices to hash */
-	//int indices[D][M];
-
-	pthread_rwlock_t vector_update;
+	tbb::concurrent_vector<Read*> reads;
 
 	/* Hashmaps */
 	HashMap maps;
 
-	/* Constructor */
-	Hash();
-	//Hash(const std::string &filename);
+	/* Constructors */
+	Hash(int);
 	~Hash();
 
-	/* Computes the H-th hash of string S */
-	//int hash(int, const char*);
+	/* Computes matches. */
+	const tbb::concurrent_vector<Read*>& matches(std::experimental::string_view);
 
-	/* Computes matches */
-	tbb::concurrent_vector<Read*> matches(std::string);
-
-	/* Adds read READ to hashmaps */
-	void add(std::string, Read*);
+	/* Adds read READ to hashmaps. */
+	void add(std::experimental::string_view, Read*);
 };
 
 #endif
