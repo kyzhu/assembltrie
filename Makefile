@@ -1,7 +1,7 @@
 
 CC = g++
 
-CPPFLAGS = -g -O3 -Wall -std=c++11
+CPPFLAGS = -g -O3 -Wall -std=c++14
 
 LIBS = -lpthread -ltbb
 
@@ -9,7 +9,7 @@ SRCS = read.cpp hash.cpp compress.cpp fqreader.cpp decompress.cpp main.cpp
 
 OBJS = $(SRCS: .cpp = .o)
 
-EXEC = Joseph
+EXEC = astrie
 
 $(EXEC) : $(OBJS)
 	$(CC) $(CPPFLAGS) $(LIBS) $^ -o $@
