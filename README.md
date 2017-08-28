@@ -5,5 +5,6 @@ Assembltrie is a software tool for compressing collections of (fixed length) Ill
 ## Usage
 To run Assembltrie from command line, type
 ```
-astrie -c|d [options]
+astrie -c|d -i<input file name> -o<output file name> [options]
 ```
+where the option `-c` implies to compress the input , and the option `-d` 
