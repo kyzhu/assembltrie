@@ -3,4 +3,4 @@ Assembltrie is a software tool for compressing collections of (fixed length) Ill
 
 ## Installation 
 ## Usage
-astrie -c|d [options]
+`astrie -c|d [options]`
