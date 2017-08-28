@@ -3,6 +3,7 @@ Assembltrie is a software tool for compressing collections of (fixed length) Ill
 
 ## Installation 
 ## Usage
+To run Assembltrie from command line, type
 ```
 astrie -c|d [options]
 ```
