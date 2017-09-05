@@ -36,3 +36,9 @@ for decompression.
  - `-L <integer>` **Mandatory**, the (fixed) read length in one compression run, should be the same as what is specified in the compression process.
  - `-h 0 | 1 | 2` **Mandatory**, although in Assembltrie's compression process it's optional. Again, it should follow what is specified in the compression process.
 
+**Sample Usage**
+```
+(export PATH=.:$PATH)
+astrie -c -L100 -K20 -h0 -s4 -iSRR554369_1.fastq -oSRR554369_1.out -e4 -n8
+astrie -d -L100 -h0 -iSRR554369_1.out -oSRR554369_1.fasta
+```
