@@ -28,7 +28,8 @@ public:
 	std::vector<std::vector<int>> rc_flags;
 
 	std::vector<int> Nstream;
-	int sum_length = 0, scanned_length = 0, nflag = 0;
+	unsigned long long sum_length = 0, scanned_length = 0;
+	int nflag = 0;
 	size_t ns_index = 0;
 
 	/* Contructors */
